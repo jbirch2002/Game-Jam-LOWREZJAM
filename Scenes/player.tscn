@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://fmrdddrxqw6m"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_2ymxb"]
+[ext_resource type="Texture2D" uid="uid://bo1j1074u3sut" path="res://Assets/Characters/character_0000.png" id="1_bweoc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b2mxu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bweoc")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_21712"]
+size = Vector2(12, 18)
+
+[node name="Player" type="CharacterBody2D"]
+floor_snap_length = 2.0
+script = ExtResource("1_2ymxb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_b2mxu")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_21712")
+
+[node name="JumpForgiveness" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -50)
