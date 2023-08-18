@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://chqt0wnwprhd2"]
+
+[ext_resource type="Script" path="res://Scripts/double_jump_powerup.gd" id="1_kdvno"]
+[ext_resource type="Texture2D" uid="uid://dbh1b654rcpg4" path="res://Assets/Characters/character_0018.png" id="2_ij0k1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4klms"]
+radius = 3.16228
+
+[node name="double_jump_powerup" type="Area2D" groups=["Powerups"]]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_kdvno")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ij0k1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_4klms")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

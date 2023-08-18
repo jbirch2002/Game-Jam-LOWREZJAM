@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://sppx2odsv8iy"]
+
+[ext_resource type="Texture2D" uid="uid://b4we6o3y6u111" path="res://Assets/16-bit-spike-Sheet.png" id="1_xhuig"]
+[ext_resource type="PackedScene" uid="uid://ca4m0nx7gy57r" path="res://Scenes/kill_zone.tscn" id="2_ft0jq"]
+
+[node name="Spikes" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, -8)
+texture = ExtResource("1_xhuig")
+hframes = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(15, 0)
+texture = ExtResource("1_xhuig")
+hframes = 4
+
+[node name="kill_zone" parent="." instance=ExtResource("2_ft0jq")]
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="kill_zone"]
+position = Vector2(15, 0)
+polygon = PackedVector2Array(1, 0, 8, -12, 15, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="kill_zone"]
+polygon = PackedVector2Array(1, 0, 8, -12, 15, 0)
