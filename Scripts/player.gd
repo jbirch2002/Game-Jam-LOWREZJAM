@@ -19,7 +19,6 @@ func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
 	wall_jump_mechanics()
 	jump_mechanics()
-	handle_double_jump()
 	apply_acceleration(direction, delta)
 	handle_air_acceleration(direction, delta)
 	apply_friction(direction, delta)
@@ -56,7 +55,9 @@ func apply_air_resistance(direction, delta):
 		velocity.x = move_toward(velocity.x, 0, player_movement.air_resistance * delta)
 
 func wall_jump_mechanics():
-	if not is_on_wall_only(): return
+	if not is_on_wall_only():
+		just_wall_jumped = false
+		return
 	var wall_normal = get_wall_normal()
 	if Input.is_action_just_pressed("jump"):
 		velocity.x = wall_normal.x * player_movement.speed
@@ -69,16 +70,20 @@ func jump_mechanics():
 		if Input.is_action_just_pressed("jump"):
 			velocity.y = player_movement.jump_velocity
 			can_forgive_jump = false
+			jump_count = 1
+			just_wall_jumped = false
+			
 	elif not is_on_floor():
 		if Input.is_action_just_released("jump") and velocity.y < player_movement.jump_velocity / 2:
 			velocity.y = player_movement.jump_velocity / 2
 
-func handle_double_jump():
-	if jump_count < jump_max:
-		if Input.is_action_just_pressed("jump"):
-			velocity.y = player_movement.jump_velocity * 0.8
-	if is_on_floor() and jump_count != 0:
-		jump_count = 0
+		if jump_count < jump_max and not just_wall_jumped:
+			if Input.is_action_just_pressed("jump"):
+				velocity.y = player_movement.jump_velocity * 0.8
+				jump_count += 1
+		if is_on_floor() and jump_count != 0:
+			jump_count = 0
+
 
 #func character_animations(direction):
 #	if direction != 0:

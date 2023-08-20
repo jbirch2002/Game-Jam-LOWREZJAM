@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://dtgg5k7ac14n3"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_pydj1"]
-[ext_resource type="PackedScene" uid="uid://bffnhtihbdb5q" path="res://Scenes/block.tscn" id="1_uks1g"]
 [ext_resource type="PackedScene" uid="uid://c8ollp7vhfobx" path="res://Scenes/signal_manager.tscn" id="2_lowu5"]
 [ext_resource type="PackedScene" uid="uid://fmrdddrxqw6m" path="res://Scenes/player.tscn" id="3_y05bd"]
 [ext_resource type="PackedScene" uid="uid://sppx2odsv8iy" path="res://Scenes/spikes.tscn" id="4_jisb4"]
 [ext_resource type="PackedScene" uid="uid://chqt0wnwprhd2" path="res://Scenes/powerup1.tscn" id="6_bh444"]
+[ext_resource type="PackedScene" uid="uid://ggh2pttlnyw4" path="res://Scenes/tile_map.tscn" id="7_tu6hb"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_pydj1")
@@ -13,77 +13,18 @@ script = ExtResource("1_pydj1")
 [node name="SignalManager" parent="." instance=ExtResource("2_lowu5")]
 
 [node name="Player" parent="." instance=ExtResource("3_y05bd")]
-position = Vector2(5, 55)
+position = Vector2(5, 47)
 
-[node name="Grass" parent="." instance=ExtResource("1_uks1g")]
-position = Vector2(2, 65)
-
-[node name="Block14" parent="Grass" instance=ExtResource("1_uks1g")]
-position = Vector2(160, 0)
-scale = Vector2(1, 1)
-
-[node name="Block13" parent="Grass" instance=ExtResource("1_uks1g")]
-position = Vector2(147.5, 0)
-scale = Vector2(1, 1)
-
-[node name="Block12" parent="Grass" instance=ExtResource("1_uks1g")]
-position = Vector2(137.5, 0)
-scale = Vector2(1, 1)
-
-[node name="Block11" parent="Grass" instance=ExtResource("1_uks1g")]
-position = Vector2(125, 0)
-scale = Vector2(1, 1)
-
-[node name="Block10" parent="Grass" instance=ExtResource("1_uks1g")]
-position = Vector2(112.5, 0)
-scale = Vector2(1, 1)
-
-[node name="Block9" parent="Grass" instance=ExtResource("1_uks1g")]
-position = Vector2(100, 0)
-scale = Vector2(1, 1)
-
-[node name="Block7" parent="Grass" instance=ExtResource("1_uks1g")]
-position = Vector2(75, 0)
-scale = Vector2(1, 1)
-
-[node name="Block3" parent="Grass" instance=ExtResource("1_uks1g")]
-position = Vector2(25, 0)
-scale = Vector2(1, 1)
-
-[node name="Block2" parent="Grass" instance=ExtResource("1_uks1g")]
-position = Vector2(12.5, 0)
-scale = Vector2(1, 1)
-
-[node name="Block4" parent="Grass" instance=ExtResource("1_uks1g")]
-position = Vector2(37.5, 0)
-scale = Vector2(1, 1)
-
-[node name="Block5" parent="Grass" instance=ExtResource("1_uks1g")]
-position = Vector2(50, 0)
-scale = Vector2(1, 1)
-
-[node name="Block6" parent="Grass" instance=ExtResource("1_uks1g")]
-position = Vector2(62.5, 0)
-scale = Vector2(1, 1)
-
-[node name="Block8" parent="Grass" instance=ExtResource("1_uks1g")]
-position = Vector2(87.5, 0)
-scale = Vector2(1, 1)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(-1, -6)
-polygon = PackedVector2Array(49, 28, 49, 56, 53, 56, 53, 28)
-
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
+[node name="TileMap" parent="." instance=ExtResource("7_tu6hb")]
+scale = Vector2(0.35, 0.35)
+layer_0/tile_data = PackedInt32Array(720896, 0, 3, 720897, 65536, 3, 720898, 65536, 3, 720899, 65536, 3, 720900, 65536, 3, 720901, 65536, 3, 720902, 65536, 3, 720903, 65536, 3, 720904, 65536, 3, 720905, 131072, 3, 589832, 0, 2, 524296, 0, 1, 458760, 0, 1, 393224, 0, 1, 589833, 131072, 2, 524297, 131072, 1, 458761, 131072, 1, 393225, 131072, 1, 327688, 0, 0, 327689, 131072, 0)
 
 [node name="Spikes" parent="." instance=ExtResource("4_jisb4")]
-position = Vector2(16, 63)
+position = Vector2(16, 62)
 scale = Vector2(0.25, 0.25)
 
 [node name="DoubleJumpPowerUp" parent="." instance=ExtResource("6_bh444")]
-position = Vector2(50, 60)
+position = Vector2(40, 58)
 scale = Vector2(0.25, 0.25)
 
 [connection signal="double_jump_power" from="DoubleJumpPowerUp" to="." method="_on_double_jump_power_up_double_jump_power"]
