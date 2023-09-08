@@ -40,7 +40,8 @@ shape = SubResource("RectangleShape2D_21712")
 wait_time = 0.05
 one_shot = true
 
-[node name="Double Jump Timer" type="Timer" parent="."]
+[node name="WallJumpTimer" type="Timer" parent="."]
+wait_time = 0.05
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -50)

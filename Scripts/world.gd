@@ -10,4 +10,3 @@ func _ready() -> void:
 
 func _on_double_jump_power_up_double_jump_power():
 	player.jump_max += 1
-

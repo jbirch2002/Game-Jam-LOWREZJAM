@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dtgg5k7ac14n3"]
+[gd_scene load_steps=6 format=3 uid="uid://dtgg5k7ac14n3"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_pydj1"]
-[ext_resource type="PackedScene" uid="uid://c8ollp7vhfobx" path="res://Scenes/signal_manager.tscn" id="2_lowu5"]
 [ext_resource type="PackedScene" uid="uid://fmrdddrxqw6m" path="res://Scenes/player.tscn" id="3_y05bd"]
 [ext_resource type="PackedScene" uid="uid://sppx2odsv8iy" path="res://Scenes/spikes.tscn" id="4_jisb4"]
 [ext_resource type="PackedScene" uid="uid://chqt0wnwprhd2" path="res://Scenes/powerup1.tscn" id="6_bh444"]
@@ -10,10 +9,8 @@
 [node name="World" type="Node2D"]
 script = ExtResource("1_pydj1")
 
-[node name="SignalManager" parent="." instance=ExtResource("2_lowu5")]
-
 [node name="Player" parent="." instance=ExtResource("3_y05bd")]
-position = Vector2(5, 47)
+position = Vector2(5, 57)
 
 [node name="TileMap" parent="." instance=ExtResource("7_tu6hb")]
 scale = Vector2(0.35, 0.35)

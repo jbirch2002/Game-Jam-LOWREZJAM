@@ -5,12 +5,14 @@ extends CharacterBody2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var jump_forgive_timer = $JumpForgiveness
 @onready var starting_position = global_position
+@onready var wall_jump_timer = $WallJumpTimer
 
 #var double_jump = false
 var jump_count = 0
 var jump_max = 1
 var just_wall_jumped = false
 var can_forgive_jump = true
+var was_wall_normal = Vector2.ZERO
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _physics_process(delta: float) -> void:
@@ -25,10 +27,17 @@ func _physics_process(delta: float) -> void:
 	apply_air_resistance(direction, delta)
 #	character_animations(direction)
 	var was_on_floor = is_on_floor()
+	var was_on_wall = is_on_wall_only()
+	if was_on_wall:
+		was_wall_normal = get_wall_normal()
 	move_and_slide()
 	var just_left_ledge = was_on_floor and not is_on_floor() and velocity.y >= 0
 	if just_left_ledge:
 		jump_forgive_timer.start()
+	var just_left_wall = was_on_floor and not is_on_wall()
+	if just_left_wall:
+		wall_jump_timer.start()
+
 
 func apply_gravity(delta):
 	if not is_on_floor():

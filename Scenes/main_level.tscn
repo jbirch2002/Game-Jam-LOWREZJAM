@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0wtj17u87ijm"]
+
+[ext_resource type="PackedScene" uid="uid://c8djnkqoivfuq" path="res://Scenes/beginning_level.tscn" id="1_xe6ex"]
+[ext_resource type="PackedScene" uid="uid://ggh2pttlnyw4" path="res://Scenes/tile_map.tscn" id="2_tvmmh"]
+[ext_resource type="PackedScene" uid="uid://sppx2odsv8iy" path="res://Scenes/spikes.tscn" id="3_bld0m"]
+[ext_resource type="PackedScene" uid="uid://chqt0wnwprhd2" path="res://Scenes/powerup1.tscn" id="4_shwgn"]
+
+[node name="World" instance=ExtResource("1_xe6ex")]
+
+[node name="Player" parent="." index="0"]
+position = Vector2(6, 57)
+
+[node name="TileMap2" parent="." index="2" instance=ExtResource("2_tvmmh")]
+scale = Vector2(0.35, 0.35)
+layer_0/tile_data = PackedInt32Array(720896, 0, 3, 720897, 65536, 3, 720898, 65536, 3, 720899, 65536, 3, 720900, 65536, 3, 720901, 65536, 3, 720902, 65536, 3, 720903, 65536, 3, 720904, 65536, 3, 720905, 131072, 3, 589832, 0, 2, 524296, 0, 1, 458760, 0, 1, 393224, 0, 1, 589833, 131072, 2, 524297, 131072, 1, 458761, 131072, 1, 393225, 131072, 1, 327688, 0, 0, 327689, 131072, 0)
+
+[node name="Spikes" parent="." index="3" instance=ExtResource("3_bld0m")]
+position = Vector2(16, 62)
+scale = Vector2(0.25, 0.25)
+
+[node name="DoubleJumpPowerUp" parent="." index="4" instance=ExtResource("4_shwgn")]
+position = Vector2(40, 58)
+scale = Vector2(0.25, 0.25)
